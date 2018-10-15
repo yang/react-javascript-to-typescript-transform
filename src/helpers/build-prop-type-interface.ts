@@ -131,6 +131,10 @@ function getTypeFromReactPropTypeExpression(node: ts.Expression): ts.TypeNode {
                     argument.elements.map(elm => getTypeFromReactPropTypeExpression(elm)),
                 );
             }
+        } else if (/instanceOf$/.test(text)) {
+            const argument = node.arguments[0];
+            // console.log(ts.createTypeReferenceNode(node.arguments[0].getText(), []));
+            return ts.createTypeReferenceNode(node.arguments[0].getText(), []);
         } else if (/arrayOf$/.test(text)) {
             const argument = node.arguments[0];
             if (argument) {
