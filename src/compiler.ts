@@ -56,7 +56,7 @@ export function compile(
     const inputSource = fs.readFileSync(filePath, 'utf-8');
     const prettierOptions = getPrettierOptions(filePath, inputSource, incomingPrettierOptions);
 
-    return prettier.format(printed, incomingPrettierOptions);
+    return printed; // prettier.format(printed, incomingPrettierOptions);
 }
 
 /**
